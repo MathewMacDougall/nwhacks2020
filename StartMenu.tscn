@@ -24,14 +24,13 @@ position = Vector2( 813.131, 289.51 )
 texture = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 58.0
 margin_right = 562.0
 margin_bottom = 600.0
 size_flags_horizontal = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 margin_top = 205.0
 margin_right = 504.0
 margin_bottom = 305.0
@@ -39,7 +38,7 @@ rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 4 )
 text = "Beyond Reach"
 
-[node name="LinkButton" type="LinkButton" parent="VBoxContainer"]
+[node name="StartButton" type="LinkButton" parent="VBoxContainer"]
 margin_top = 309.0
 margin_right = 504.0
 margin_bottom = 335.0
@@ -47,7 +46,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "Start Game"
 underline = 1
 
-[node name="LinkButton2" type="LinkButton" parent="VBoxContainer"]
+[node name="ContinueButton" type="LinkButton" parent="VBoxContainer"]
 margin_top = 339.0
 margin_right = 504.0
 margin_bottom = 365.0
@@ -55,7 +54,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "Continue"
 underline = 1
 
-[node name="LinkButton3" type="LinkButton" parent="VBoxContainer"]
+[node name="Credit" type="LinkButton" parent="VBoxContainer"]
 margin_top = 369.0
 margin_right = 504.0
 margin_bottom = 395.0
@@ -71,3 +70,4 @@ autoplay = true
 [node name="StationSmall" type="Sprite" parent="."]
 position = Vector2( 856.212, 313.907 )
 texture = ExtResource( 7 )
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
