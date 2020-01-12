@@ -6,6 +6,7 @@
 [node name="TestObjectGenerator" type="Node2D"]
 
 [node name="ObjectGenerator" parent="." instance=ExtResource( 1 )]
-position = Vector2( 492, 219 )
+position = Vector2( 493, 219 )
 object = ExtResource( 2 )
-
+min_linear_speed = 100
+max_linear_speed = 300
