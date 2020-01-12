@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+var initial_player_position
+
 # Max speed of the player (pixels/sec)
 export var speed = 400
 
@@ -14,7 +16,8 @@ var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    initial_player_position = position
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,7 +39,7 @@ func _input(event):
     if event is InputEventMouseButton:
         if on_a_wall:
             # Let the player jump in the direction of the click
-            desired_jump_direction = event.position - position
+            desired_jump_direction = get_global_mouse_position() - position
 
 func _on_player_body_entered(body):
     linear_velocity = Vector2()
@@ -47,3 +50,10 @@ func _on_player_body_shape_entered(body_id, body, body_shape, local_shape):
     linear_velocity = Vector2()
     angular_velocity = 0
     pass # Replace with function body.
+    
+func _on_kill_player():
+    position = initial_player_position
+    linear_velocity = Vector2()
+    angular_velocity = 0
+    rotation = 0
+    desired_jump_direction = false
