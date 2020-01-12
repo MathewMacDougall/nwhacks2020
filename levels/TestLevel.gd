@@ -28,4 +28,14 @@ func check_player_out_of_bounds():
         return true
 
 func _on_LaserReceiver_laser_detected():
-    $MetalDoor.open_or_close()
+    $AirlockDoor.open_or_close()
+
+
+func _on_HallwayDoorLaserReceiver_laser_detected():
+    $HallwayDoor.open_or_close()
+
+func _on_AirlockDoor_opened():
+    $Gravity.enable()
+    
+func _on_AirlockDoor_closed():
+    $Gravity.disable()

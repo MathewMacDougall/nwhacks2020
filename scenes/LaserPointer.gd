@@ -16,7 +16,6 @@ func _ready():
     # Hides the laser line by removing the second point
     $Line2D.remove_point(1)
     objects_ignore_laser_collision.append(laser_ignore)
-    print(laser_ignore)
     
 func _process(delta):
     # orient the laser pointer towards the mouse
@@ -57,7 +56,6 @@ func cast_beam():
         beam_end = result.position
         if result.collider is LaserReceiver:
             result.collider.receive_laser()
-        #print(result.metadata)
     else:
         beam_end = beam_origin + beam_vector
         

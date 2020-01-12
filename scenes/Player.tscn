@@ -48,6 +48,8 @@ physics_material_override = SubResource( 1 )
 contacts_reported = 10
 contact_monitor = true
 script = ExtResource( 1 )
+laser_normal_position = Vector2( 28.011, -4.771 )
+laser_non_normal_position = Vector2( -28.427, -4.771 )
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0221157, 0.0579681 )
@@ -61,16 +63,16 @@ energy = 0.7
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
-vframes = 8
+vframes = 10
 hframes = 2
-frame = 6
+frame = 7
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
 
 [node name="LaserPointer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 28.0111, -4.77142 )
+position = Vector2( -28.4266, -5.73616 )
 
 [node name="DeathAnimate" type="AnimationPlayer" parent="."]
 anims/in = SubResource( 3 )
