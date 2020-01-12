@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/EvilComputer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/boss.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Fire.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,4 +18,124 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 build_mode = 1
 polygon = PoolVector2Array( 111.497, 299.179, 178.39, 268.305, 250.429, 203.617, 288.654, 144.075, 313.647, 68.3601, 321.733, -25.7316, 311.442, -90.4197, 276.157, -169.075, 232.052, -221.266, 185.741, -267.577, 114.437, -302.861, 46.0735, -318.298, -18.6146, -319.033, -89.1834, -307.272, -139.905, -287.424, -177.394, -266.107, -217.824, -230.822, -270.751, -174.22, -306.771, -101.446, -319.267, -41.1685, -319.267, 52.9232, -304.565, 104.38, -279.572, 163.187, -239.877, 215.378, -187.686, 264.63, -139.905, 288.888, -109.766, 298.444, -49.4885, 208.763, -90.6536, 191.12, -129.613, 160.982, -163.428, 116.141, -186.951, 66.89, -196.507, 15.4335, -196.507, -33.8176, -183.275, -86.7442, -154.607, -137.466, -114.912, -176.425, -68.6009, -202.154, -0.972412, -216.855, 43.8682, -213.915, 82.093, -202.154, 107.821, -183.776, 137.225, -159.518, 160.748, -130.115, 182.065, -80.1284, 198.237, -26.4667, 198.237, 27.195, 187.591, 71.5794, 158.961, 123.423, 120.272, 168.302, 79.2612, 194.611, 48.31, 205.444 )
+
+[node name="Fire" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -109.702, 300.042 )
+rotation = 2.05203
+scale = Vector2( 1, 3 )
+
+[node name="Fire2" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -173.097, 266.457 )
+rotation = 2.28032
+scale = Vector2( 1, 3 )
+
+[node name="Fire3" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -229.021, 219.854 )
+rotation = 2.4758
+scale = Vector2( 1, 3 )
+
+[node name="Fire4" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -274.548, 163.213 )
+rotation = 2.73112
+scale = Vector2( 1, 3 )
+
+[node name="Fire5" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -306.227, 98.409 )
+rotation = 2.99788
+scale = Vector2( 1, 3 )
+
+[node name="Fire6" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -317.67, 23.1474 )
+rotation = 3.17643
+scale = Vector2( 1, 3 )
+
+[node name="Fire7" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -316.972, -53.2201 )
+rotation = 3.47843
+scale = Vector2( 1, 3 )
+
+[node name="Fire8" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -293.934, -126.705 )
+rotation = 3.66877
+scale = Vector2( 1, 3 )
+
+[node name="Fire9" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -258.582, -191.053 )
+rotation = 3.92672
+scale = Vector2( 1, 3 )
+
+[node name="Fire10" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -205.355, -249.444 )
+rotation = 4.20699
+scale = Vector2( 1, 3 )
+
+[node name="Fire11" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -142.198, -287.576 )
+rotation = 4.41357
+scale = Vector2( 1, 3 )
+
+[node name="Fire12" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( -70.6994, -313.395 )
+rotation = 4.62838
+scale = Vector2( 1, 3 )
+
+[node name="Fire13" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 5.5657, -322.134 )
+rotation = 4.88334
+scale = Vector2( 1, 3 )
+
+[node name="Fire14" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 78.6532, -312.601 )
+rotation = 5.09407
+scale = Vector2( 1, 3 )
+
+[node name="Fire15" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 148.166, -287.179 )
+rotation = 5.34159
+scale = Vector2( 1, 3 )
+
+[node name="Fire16" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 209.337, -245.075 )
+rotation = 5.56397
+scale = Vector2( 1, 3 )
+
+[node name="Fire17" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 260.18, -187.876 )
+rotation = 5.79753
+scale = Vector2( 1, 3 )
+
+[node name="Fire18" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 298.71, -122.733 )
+rotation = 6.05093
+scale = Vector2( 1, 3 )
+
+[node name="Fire19" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 317.776, -46.0702 )
+rotation = 6.28796
+scale = Vector2( 1, 3 )
+
+[node name="Fire20" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 318.571, 28.6061 )
+rotation = 6.51087
+scale = Vector2( 1, 3 )
+
+[node name="Fire21" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 303.874, 102.488 )
+rotation = 6.72797
+scale = Vector2( 1, 3 )
+
+[node name="Fire22" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 271.302, 175.973 )
+rotation = 7.00161
+scale = Vector2( 1, 3 )
+
+[node name="Fire23" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 222.048, 235.952 )
+rotation = 7.29896
+scale = Vector2( 1, 3 )
+
+[node name="Fire24" parent="StaticBody2D" instance=ExtResource( 3 )]
+position = Vector2( 222.048, 235.952 )
+rotation = 7.3184
+scale = Vector2( 1, 3 )
 
