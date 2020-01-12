@@ -7,10 +7,11 @@ var window_bounds
 # Called when the node enters the scene tree for the first time.
 func _ready():
     connect("kill_player", $Player, "_on_kill_player")
-    window_bounds = get_viewport().size
     set_camera_limits()
     
 func _process(delta):
+    window_bounds = get_viewport().size
+    
     if check_player_out_of_bounds():
         emit_signal("kill_player")
 

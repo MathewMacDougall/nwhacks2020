@@ -53,6 +53,8 @@ func _process(delta):
         else:
             rotation = fmod(linear_velocity.angle(), PI)
         desired_jump_direction = false
+    else:
+        desired_jump_direction = false
     
     # If holding a joint, determine the angle to take
     if player_holding_joint:
@@ -80,21 +82,22 @@ func _input(event):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and !event.pressed:
         # If we're on a wall, remove the joint holding us there and jump!
         if player_holding_joint:
+            desired_jump_direction = get_global_mouse_position() - position
             remove_holding_joint()
-            # Let the player jump in the direction of the click
-        # TODO: indent this line by 1
-        desired_jump_direction = get_global_mouse_position() - position
-        
-    # Handle crawling if we're on a wall
-    if player_holding_joint:
-        if Input.is_action_pressed("ui_up"):
-            current_crawl_speed = max_abs_crawl_speed
-        elif Input.is_action_pressed("ui_down"):
-            current_crawl_speed = -max_abs_crawl_speed
+    elif event is InputEventKey:
+        # Handle crawling if we're on a wall
+        if player_holding_joint:
+            if Input.is_action_pressed("ui_up"):
+                current_crawl_speed = max_abs_crawl_speed
+            elif Input.is_action_pressed("ui_down"):
+                current_crawl_speed = -max_abs_crawl_speed
+            else:
+                current_crawl_speed = 0
         else:
             current_crawl_speed = 0
-    else:
-        current_crawl_speed = 0
+            
+        if event.scancode == KEY_R:
+            _on_kill_player()
         
         
 func _integrate_forces(state): 
