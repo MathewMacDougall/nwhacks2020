@@ -80,9 +80,7 @@ func _input(event):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and !event.pressed:
         # If we're on a wall, remove the joint holding us there and jump!
         if player_holding_joint:
-            player_holding_joint.free()
-            player_holding_joint = false
-            ignore_ladders_timer = ladder_timeout
+            remove_holding_joint()
             # Let the player jump in the direction of the click
         # TODO: indent this line by 1
         desired_jump_direction = get_global_mouse_position() - position
@@ -138,9 +136,7 @@ func _on_kill_player():
     linear_velocity = Vector2()
     angular_velocity = 0
     gravity_scale = 0
-    if(player_holding_joint):
-        player_holding_joint.free()
-    player_holding_joint = false
+    remove_holding_joint()
     player_killed = true
     $DeathAnimate.play("in")
 
@@ -160,3 +156,10 @@ func _on_LaserPointer_shoot_laser_start():
 
 func _on_LaserPointer_shoot_laser_end():
     laser_active = false
+
+func remove_holding_joint():
+    if(player_holding_joint):
+        player_holding_joint.free()
+        ignore_ladders_timer = ladder_timeout
+
+    player_holding_joint = false

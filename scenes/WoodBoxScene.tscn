@@ -3,12 +3,11 @@
 [ext_resource path="res://scenes/WoodBoxScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/wood_box.png" type="Texture" id=2]
 
-
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.4
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15.9645, 16.0266 )
+extents = Vector2( 16, 16 )
 
 [node name="WoodBox" type="RigidBody2D"]
 physics_material_override = SubResource( 1 )
@@ -25,4 +24,5 @@ __meta__ = {
 }
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="."]
+
 [connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]

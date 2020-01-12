@@ -13,19 +13,18 @@ var opening = true
 var left_door_initial_x = null
 var right_door_initial_x = null
 
-func _init():
-    if(initially_open):
-        opening = true
-        current_time = time_to_open_seconds
-    else:
-        opening = false
-        current_time = 0.0
         
 # Called when the node enters the scene tree for the first time.
 func _ready():
     left_door_initial_x = $DoorLeft.position.x
     right_door_initial_x = $DoorRight.position.x
     
+    if(initially_open):
+        current_time = time_to_open_seconds
+        open()
+    else:
+        current_time = 0.0
+        close()
     
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
