@@ -15,11 +15,15 @@ var on_a_wall = true
 # The joint holding the player to something
 var player_holding_joint = false
 
+var player_killed = false
+var laser_active = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     initial_player_position = position
 
     $LaserPointer.laser_ignore.append(self)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,11 +32,7 @@ func _process(delta):
         linear_velocity = desired_jump_direction.normalized() * speed
         desired_jump_direction = false
         
-    # Determine sprite to draw
-    if linear_velocity.x < 0:
-        $Sprite.frame = 9
-    else:
-        $Sprite.frame = 8
+    select_player_sprite()
     
 # This is called on mouse/keyboard events
 func _input(event):
@@ -58,10 +58,37 @@ func _integrate_forces(state):
             player_holding_joint.set_node_a("../" + get_parent().get_path_to(self))
             player_holding_joint.set_node_b("../" + get_parent().get_path_to(colliding_body))
             get_parent().call_deferred("add_child", player_holding_joint)
+            
+func select_player_sprite():
+    # Determine sprite to draw
+    if not player_killed:
+        if laser_active:
+            $Sprite.frame = 6
+        elif player_holding_joint:
+            $Sprite.frame = 11
+        elif linear_velocity.x < 0:
+            $Sprite.frame = 9
+        else:
+            $Sprite.frame = 8
 
 func _on_kill_player():
-    position = initial_player_position
     linear_velocity = Vector2()
     angular_velocity = 0
-    rotation = 0
-    desired_jump_direction = false
+    player_killed = true
+    $DeathAnimate.play("in")
+
+func _on_DeathAnimate_animation_finished(anim_name):
+    if anim_name == "in":
+        position = initial_player_position
+        desired_jump_direction = false
+        rotation = 0
+        $DeathAnimate.play("out")
+    elif anim_name == "out":
+        player_killed = false
+
+func _on_LaserPointer_shoot_laser_start():
+    laser_active = true
+
+
+func _on_LaserPointer_shoot_laser_end():
+    laser_active = false

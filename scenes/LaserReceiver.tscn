@@ -18,7 +18,6 @@ offset = Vector2( 0, -5.5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7.61 )
 rotation = 1.14319
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
