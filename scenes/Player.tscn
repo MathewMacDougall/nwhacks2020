@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/light.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/player_atlas.png" type="Texture" id=3]
+[ext_resource path="res://scenes/LaserPointer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
@@ -54,4 +55,6 @@ playback_speed = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="LaserPointer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 26.096, 1.73973 )
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
