@@ -116,6 +116,8 @@ func _integrate_forces(state):
             get_parent().call_deferred("add_child", player_holding_joint)
             
             linear_velocity = Vector2()
+        elif colliding_body is Fire && !player_killed:
+            _on_kill_player()
                
 func select_player_sprite():
     # Determine sprite to draw

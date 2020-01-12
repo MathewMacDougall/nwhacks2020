@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "StaticBody2D",
+"class": "Fire",
+"language": "GDScript",
+"path": "res://scenes/Fire.gd"
+}, {
+"base": "StaticBody2D",
 "class": "Ladder",
 "language": "GDScript",
 "path": "res://scenes/Ladder.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scenes/LaserReceiver.gd"
 } ]
 _global_script_class_icons={
+"Fire": "",
 "Ladder": "",
 "LaserReceiver": ""
 }
@@ -32,12 +38,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneChanger="*res://scenes/SceneChanger.tscn"
-
-[display]
-
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+SceneChanger="*res://scenes/SceneChanger.gd"
 
 [physics]
 
