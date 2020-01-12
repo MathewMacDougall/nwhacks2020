@@ -18,20 +18,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    # Only permit user control if we're on a wall
-    if on_a_wall and desired_jump_direction:
+    # Perform a jump if one is set
+    if desired_jump_direction:
         # Move the player in the direction they want to go
         velocity = desired_jump_direction.normalized()*speed
-        
         linear_velocity = desired_jump_direction.normalized() * speed
-        
-#    if velocity.length() > 0:
-#        if collision:
-#            on_a_wall = true
-#            velocity = Vector2()
-#            desired_jump_direction = false
-#        else:
-#            on_a_wall = false
+        desired_jump_direction = false
     
 # This is called on mouse/keyboard events
 func _input(event):
@@ -40,5 +32,12 @@ func _input(event):
             # Let the player jump in the direction of the click
             desired_jump_direction = event.position - position
 
-func _on_KinematicBody2D_body_shape_entered(body_id, body, body_shape, local_shape):
+func _on_player_body_entered(body):
     linear_velocity = Vector2()
+    angular_velocity = 0
+
+
+func _on_player_body_shape_entered(body_id, body, body_shape, local_shape):
+    linear_velocity = Vector2()
+    angular_velocity = 0
+    pass # Replace with function body.
