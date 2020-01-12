@@ -26,4 +26,6 @@ func check_player_out_of_bounds():
     var player_position = $Player.get_global_transform_with_canvas().origin
     if player_position.y < 0 or player_position.y > window_bounds.y:
         return true
-    
+
+func _on_LaserReceiver_laser_detected():
+    $MetalDoor.open_or_close()
