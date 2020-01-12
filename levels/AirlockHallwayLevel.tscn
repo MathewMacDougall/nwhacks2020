@@ -253,6 +253,7 @@ autoplay = true
 [node name="MetalDoor" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1849.19, 703.896 )
 rotation = 1.5708
+open_width = 120
 initially_open = true
 [connection signal="closed" from="Airlock1" to="." method="_on_Airlock1_closed"]
 [connection signal="opened" from="Airlock1" to="." method="_on_Airlock1_opened"]
