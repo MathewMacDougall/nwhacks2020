@@ -11,3 +11,5 @@ width = 7.0
 default_color = Color( 1, 0, 0, 1 )
 texture_mode = 51
 end_cap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

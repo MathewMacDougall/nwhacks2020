@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/TestLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/space2.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/MetalDoorScene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/LaserReceiver.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Fire.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/StickyBox.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "space2.png 0"
@@ -173,7 +174,8 @@ rotation = -3.14159
 scale = Vector2( 2, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 91.0683, 389.409 )
+position = Vector2( 82.0602, 386.637 )
+linear_velocity = Vector2( 0, -10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -206,5 +208,10 @@ scale = Vector2( 2, 2 )
 [node name="Fire2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 704.507, 193.574 )
 scale = Vector2( 2, 2 )
+
+[node name="StickyBox" parent="." instance=ExtResource( 13 )]
+position = Vector2( 546.78, 572.853 )
+mass = 8.0
+linear_velocity = Vector2( 0, 30 )
 [connection signal="laser_detected" from="LaserReceiver" to="." method="_on_LaserReceiver_laser_detected"]
 [connection signal="body_entered" from="next_scene" to="." method="_on_next_scene_body_entered"]

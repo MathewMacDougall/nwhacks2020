@@ -58,10 +58,7 @@ func _process(delta):
     
     # If holding a joint, determine the angle to take
     if player_holding_joint:
-        var wall_to_crawl_along = player_holding_joint.get_node(player_holding_joint.node_b)
-        player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
-        rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation 
-        angular_velocity = 0
+        
         
         # Determine crawl angle if necessary
         if abs(current_crawl_speed) > 0:
@@ -115,7 +112,11 @@ func _integrate_forces(state):
             player_holding_joint.set_node_b("../" + get_parent().get_path_to(colliding_body))
             get_parent().call_deferred("add_child", player_holding_joint)
             
-            linear_velocity = Vector2()
+            var wall_to_crawl_along = colliding_body
+            player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
+            rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation
+            angular_velocity = 0 
+            
         elif colliding_body is Fire && !player_killed:
             _on_kill_player()
                
