@@ -20,6 +20,7 @@ var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    
     player_holding_joint = PinJoint2D.new()
     player_holding_joint.set_name("ladder_joint")
 
@@ -33,9 +34,8 @@ func _ready():
     get_parent().call_deferred("add_child", player_holding_joint)
   
     assert(tilemap != null)
-
+    
     $LaserPointer.laser_ignore.append(self)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -88,14 +88,5 @@ func _integrate_forces(state):
 #            var angle = direction_of_collision.angle_to(velocity)
 #            pass;
                 
-
-func _on_player_body_entered(body):
-    linear_velocity = Vector2()
-    angular_velocity = 0
-
-
-func _on_player_body_shape_entered(body_id, body, body_shape, local_shape):
-    linear_velocity = Vector2()
-    angular_velocity = 0
-    pass # Replace with function body.
-
+        
+    

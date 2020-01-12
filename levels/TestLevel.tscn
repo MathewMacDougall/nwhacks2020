@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/space2.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/space1.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music/Main.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/LaserReceiver.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "space2.png 0"
@@ -123,6 +124,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32.3053, 418.123 )
+tilemap = NodePath("../TileMap")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
@@ -130,3 +132,8 @@ autoplay = true
 
 [node name="Light2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 926.914, 383.515 )
+
+[node name="LaserReceiver" parent="." instance=ExtResource( 9 )]
+position = Vector2( 219.42, 282.645 )
+rotation = 2.35619
+scale = Vector2( 2, 2 )
