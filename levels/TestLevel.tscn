@@ -55,6 +55,7 @@ tile_data = PoolIntArray( 0, 1610612740, 0, 1, 1610612740, 0, 2, 1610612740, 0, 
 position = Vector2( 32.3053, 418.123 )
 
 [node name="Lights" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Light2D" parent="Lights" instance=ExtResource( 6 )]
 position = Vector2( 32.6707, 320.829 )
