@@ -43,6 +43,12 @@ func _process(delta):
         velocity = desired_jump_direction.normalized()*speed
         linear_velocity = desired_jump_direction.normalized() * speed
         desired_jump_direction = false
+        
+    # Determine sprite to draw
+    if velocity.x < 0:
+        $Sprite.frame = 9
+    else:
+        $Sprite.frame = 8
     
 # This is called on mouse/keyboard events
 func _input(event):
