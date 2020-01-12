@@ -4,6 +4,9 @@ export var open_width = 100
 export var time_to_open_seconds = 1.0
 export var initially_open = false
 
+signal opened
+signal closed
+
 var current_time = 0.0
 var opening = true
 
@@ -38,10 +41,15 @@ func _process(delta):
     $DoorRight.position.x = right_door_initial_x + (current_time / time_to_open_seconds) * open_width / 2.0
     
 func open_or_close():
-    opening = !opening
+    if opening:
+        close()
+    else:
+        open()
     
 func open():
     opening = true
+    emit_signal("opened")
     
 func close():
     opening = false
+    emit_signal("closed")
