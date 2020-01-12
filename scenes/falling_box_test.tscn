@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/gravity_area_1.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Box.tscn" type="PackedScene" id=2]
+
+[node name="falling_box_test" type="Node2D"]
+
+[node name="gravity_area_1" type="Area2D" parent="."]
+space_override = 1
+gravity_point = true
+gravity_vec = Vector2( 1800, 500 )
+script = ExtResource( 1 )
+
+[node name="falling_box" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2021.4, 99.56 )
+
+[node name="gravity_area_2" type="Area2D" parent="."]
+space_override = 1
+gravity_point = true
+gravity_vec = Vector2( 2000, 600 )
+gravity = 900.0
+
