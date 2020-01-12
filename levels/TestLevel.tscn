@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/TestLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/space2.png" type="Texture" id=2]
@@ -10,7 +10,10 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/music/Main.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/MetalDoorScene.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/LaserReceiver.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/ObjectGeneratorScene.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/WoodBoxScene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/LaserReceiver.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Gravity.gd" type="Script" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "space2.png 0"
@@ -33,6 +36,9 @@
 1/navigation_offset = Vector2( 0, 0 )
 1/shapes = [  ]
 1/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 293.774, 872.662 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -139,15 +145,54 @@ color = Color( 0.746094, 0.746094, 0.746094, 1 )
 [node name="Light2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 926.914, 383.515 )
 
-[node name="MetalDoor" parent="." instance=ExtResource( 10 )]
+[node name="HallwayDoor" parent="." instance=ExtResource( 10 )]
 position = Vector2( 909.394, 450.9 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 open_width = 64
 initially_open = true
 
-[node name="LaserReceiver" parent="." instance=ExtResource( 11 )]
+[node name="ObjectGenerators" type="Node2D" parent="."]
+
+[node name="ObjectGenerator1" parent="ObjectGenerators" instance=ExtResource( 11 )]
+position = Vector2( 431.522, -24.0677 )
+object = ExtResource( 12 )
+direction = Vector2( -1, 1 )
+min_speed = 250
+max_speed = 400
+interval_seconds = 3.0
+
+[node name="ObjectGenerator" parent="ObjectGenerators" instance=ExtResource( 11 )]
+position = Vector2( 655.077, -38.6492 )
+object = ExtResource( 12 )
+direction = Vector2( 0, 1 )
+interval_seconds = 2.0
+
+[node name="AirlockLaserReceiver" parent="." instance=ExtResource( 13 )]
 position = Vector2( 219.42, 287.103 )
 rotation = 2.35619
 scale = Vector2( 2, 2 )
-[connection signal="laser_detected" from="LaserReceiver" to="." method="_on_LaserReceiver_laser_detected"]
+
+[node name="AirlockDoor" parent="." instance=ExtResource( 10 )]
+position = Vector2( 544.181, 739.396 )
+scale = Vector2( 5, 2 )
+open_width = 200
+time_to_open_seconds = 0.25
+
+[node name="HallwayDoorLaserReceiver" parent="." instance=ExtResource( 13 )]
+position = Vector2( 857.544, 348.156 )
+rotation = -2.35619
+scale = Vector2( 2, 2 )
+
+[node name="Gravity" type="Area2D" parent="."]
+gravity = 1024.0
+script = ExtResource( 14 )
+initially_enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
+position = Vector2( 544.866, 630.938 )
+shape = SubResource( 2 )
+[connection signal="laser_detected" from="AirlockLaserReceiver" to="." method="_on_LaserReceiver_laser_detected"]
+[connection signal="closed" from="AirlockDoor" to="." method="_on_AirlockDoor_closed"]
+[connection signal="opened" from="AirlockDoor" to="." method="_on_AirlockDoor_opened"]
+[connection signal="laser_detected" from="HallwayDoorLaserReceiver" to="." method="_on_HallwayDoorLaserReceiver_laser_detected"]
