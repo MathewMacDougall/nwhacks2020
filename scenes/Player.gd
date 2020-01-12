@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 # Max speed of the player (pixels/sec)
 export var speed = 400
@@ -18,45 +18,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    #    # Figure out the player velocity
-    #    var velocity = Vector2()
-    #    if Input.is_action_pressed("ui_right"):
-    #        velocity.x += 1
-    #    if Input.is_action_pressed("ui_left"):
-    #        velocity.x -= 1
-    #    if Input.is_action_pressed("ui_up"):
-    #        velocity.y -= 1
-    #    if Input.is_action_pressed("ui_down"):
-    #        velocity.y += 1
-    #    if velocity.length() > 0:
-    #        velocity = velocity.normalized() * speed
-    #        $AnimatedSprite.play()
-    #    else:
-    #        $AnimatedSprite.stop()
-    #
-    #    # Choose the animation based on the velocity direction
-    #    if velocity.x != 0:
-    #        # TODO: right animation
-    #        #$AnimatedSprite.animation = "right"
-    #        $AnimatedSprite.flip_v = false
-    #        $AnimatedSprite.flip_h = velocity.x < 0
-    #    elif velocity.y != 0:
-    #        # TODO: up/down animation
-    #        #$AnimatedSprite.animation = "up"
-    #        $AnimatedSprite.flip_v = velocity.y > 0
-    
-    # Only permit user control if we're on a wall
-    if on_a_wall and desired_jump_direction:
+    # Perform a jump if one is set
+    if desired_jump_direction:
         # Move the player in the direction they want to go
         velocity = desired_jump_direction.normalized()*speed
-    var collision = move_and_collide(velocity*delta)
-    if velocity.length() > 0:
-        if collision:
-            on_a_wall = true
-            velocity = Vector2()
-            desired_jump_direction = false
-        else:
-            on_a_wall = false
+        linear_velocity = desired_jump_direction.normalized() * speed
+        desired_jump_direction = false
     
 # This is called on mouse/keyboard events
 func _input(event):
@@ -64,3 +31,13 @@ func _input(event):
         if on_a_wall:
             # Let the player jump in the direction of the click
             desired_jump_direction = event.position - position
+
+func _on_player_body_entered(body):
+    linear_velocity = Vector2()
+    angular_velocity = 0
+
+
+func _on_player_body_shape_entered(body_id, body, body_shape, local_shape):
+    linear_velocity = Vector2()
+    angular_velocity = 0
+    pass # Replace with function body.

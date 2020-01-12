@@ -1,6 +1,5 @@
 extends Node2D
 
-#var JunkBox = preload("res://JunkBoxScene.tscn")
 export (PackedScene) var object
 
 export var direction = Vector2(1, 1)
