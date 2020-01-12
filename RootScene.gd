@@ -3,8 +3,13 @@ extends Node
 var current_level_index = -1
 var current_level = null
 var level_paths = [
+    "levels/Level0.tscn",
     "levels/Level1.tscn",
-    "levels/AirlockHallwayLevel.tscn"
+    "levels/AirlockHallwayLevel.tscn",
+    "levels/MovingBoxLevel.tscn",
+    "scenes/Finale.tscn",
+    "Hurray.tscn",
+    "StartMenu.tscn"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -24,14 +29,21 @@ func load_custom_cursor():
     
 func _on_play_music(path):
     $Music.stream = load(path)
-    $Music.play() 
+    $Music.play()
 
 func _on_next_level():
+    current_level_index += 1
+    
+    if current_level_index >= len(level_paths):
+        current_level_index = 0
+    
+    call_deferred("_deferred_goto_scene", level_paths[current_level_index])
+
+
+func _deferred_goto_scene(path):
     if current_level != null:
         remove_child(current_level)
         current_level.call_deferred("free")
-    
-    current_level_index += 1
     
     # Add the next level
     var next_level_resource = load(level_paths[current_level_index])

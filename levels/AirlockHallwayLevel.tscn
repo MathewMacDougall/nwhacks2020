@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/AirlockHallwayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/space.tres" type="TileSet" id=2]
@@ -7,12 +7,16 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MetalDoorScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/LaserReceiver.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Gravity.gd" type="Script" id=8]
-[ext_resource path="res://scenes/Ladder.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/WoodBoxScene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Gravity.gd" type="Script" id=9]
+[ext_resource path="res://scenes/Ladder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Light.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 956.893
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 55.0639 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -34,21 +38,15 @@ scale = Vector2( 2, 2 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 1610612742, 0, 1, 1610612742, 0, 2, 1610612742, 0, 3, 1610612742, 0, 4, 1610612742, 0, 5, 1610612736, 0, 6, 1610612736, 0, 7, 1610612736, 0, 11, 1610612736, 0, 12, 1610612736, 0, 13, 1610612736, 0, 14, 1610612736, 0, 15, 1610612736, 0, 16, 1610612736, 0, 17, 1610612739, 0, 18, 1610612736, 0, 19, 1610612736, 0, 20, 1610612736, 0, 21, 1610612736, 0, 22, 1610612736, 0, 23, -1073741818, 0, 24, -1073741818, 0, 25, -1073741818, 0, 26, -1073741818, 0, 27, -1073741818, 0, 28, -1073741818, 0, 65536, 1610612743, 0, 65537, 1610612743, 0, 65538, -1610612732, 0, 65539, -1610612732, 0, 65540, -1610612726, 0, 65541, 9, 0, 65542, 9, 0, 65543, 9, 0, 65544, 9, 0, 65545, 9, 0, 65546, 9, 0, 65547, 1610612745, 0, 65548, 1610612745, 0, 65549, 1610612745, 0, 65550, 9, 0, 65551, 9, 0, 65552, 9, 0, 65553, 9, 0, 65554, 9, 0, 65555, 9, 0, 65556, 9, 0, 65557, 9, 0, 65558, 9, 0, 65559, 1610612746, 0, 65560, -1073741818, 0, 65561, 1610612743, 0, 65562, 1610612743, 0, 65563, -1073741818, 0, 65564, -1073741818, 0, 131072, 1610612743, 0, 131073, 1610612743, 0, 131074, -1610612732, 0, 131075, -1610612733, 0, 131076, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, 9, 0, 131080, -1610612728, 0, 131081, -1610612728, 0, 131082, -1610612728, 0, 131083, -1610612728, 0, 131084, 9, 0, 131085, 9, 0, 131086, 9, 0, 131087, 9, 0, 131088, 9, 0, 131089, 9, 0, 131090, 9, 0, 131091, 9, 0, 131092, 9, 0, 131093, 9, 0, 131094, 9, 0, 131095, 9, 0, 131096, -1073741821, 0, 131097, -1073741818, 0, 131098, -1073741818, 0, 131099, -1073741818, 0, 131100, -1073741818, 0, 196608, -1610612732, 0, 196609, -1610612732, 0, 196610, -1610612732, 0, 196611, -1610612733, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 8, 0, 196620, 1610612744, 0, 196621, 9, 0, 196622, 9, 0, 196623, 9, 0, 196624, 9, 0, 196625, 9, 0, 196626, 9, 0, 196627, 9, 0, 196628, 9, 0, 196629, 9, 0, 196630, -1610612728, 0, 196631, -1610612728, 0, 196632, -1073741821, 0, 196633, -1073741818, 0, 196634, -1073741818, 0, 196635, -1073741818, 0, 196636, -1073741818, 0, 262144, 1610612736, 0, 262145, 1610612739, 0, 262146, 1610612736, 0, 262147, -1610612726, 0, 262148, 9, 0, 262149, 9, 0, 262150, 9, 0, 262151, 8, 0, 262156, 1610612744, 0, 262157, 9, 0, 262158, 9, 0, 262159, 9, 0, 262160, 9, 0, 262161, 9, 0, 262162, 9, 0, 262163, 9, 0, 262164, 9, 0, 262165, 8, 0, 262168, 1610612738, 0, 262169, 1610612739, 0, 262170, 1610612736, 0, 262171, 1610612739, 0, 262172, 1610612736, 0, 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 8, 0, 327692, 1610612744, 0, 327693, 9, 0, 327694, 9, 0, 327695, 9, 0, 327696, 9, 0, 327697, 9, 0, 327698, 9, 0, 327699, 9, 0, 327700, 9, 0, 327701, 8, 0, 327706, 1610612744, 0, 327707, 9, 0, 327708, 9, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, -1073741816, 0, 393225, -1073741816, 0, 393226, -1073741816, 0, 393227, -1073741816, 0, 393228, 9, 0, 393229, 9, 0, 393230, 9, 0, 393231, 9, 0, 393232, 9, 0, 393233, 9, 0, 393234, 9, 0, 393235, 9, 0, 393236, 9, 0, 393237, 9, 0, 393238, -1073741816, 0, 393239, -1073741816, 0, 393240, -1073741816, 0, 393241, -1073741816, 0, 393242, 9, 0, 393243, 9, 0, 393244, 9, 0, 458752, 0, 0, 458753, 3, 0, 458754, 0, 0, 458755, 10, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 9, 0, 458760, 9, 0, 458761, 9, 0, 458762, 9, 0, 458763, 9, 0, 458764, 9, 0, 458765, 9, 0, 458766, 9, 0, 458767, 9, 0, 458768, 9, 0, 458769, 9, 0, 458770, 9, 0, 458771, 9, 0, 458772, 9, 0, 458773, 9, 0, 458774, 9, 0, 458775, 9, 0, 458776, -1073741814, 0, 458777, 3, 0, 458778, 0, 0, 458779, 3, 0, 458780, 0, 0, 524288, -1610612732, 0, 524289, -1610612732, 0, 524290, 1610612743, 0, 524291, -1610612733, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524302, 9, 0, 524303, 9, 0, 524304, 9, 0, 524305, 9, 0, 524306, 9, 0, 524307, 9, 0, 524308, 9, 0, 524309, 9, 0, 524310, 9, 0, 524311, 9, 0, 524312, -1073741821, 0, 524313, -1073741818, 0, 524314, -1073741818, 0, 524315, -1073741818, 0, 524316, -1073741818, 0, 589824, -1610612732, 0, 589825, -1610612732, 0, 589826, -1610612732, 0, 589827, -1610612733, 0, 589828, 9, 0, 589829, 9, 0, 589830, 9, 0, 589831, 9, 0, 589832, 9, 0, 589833, 9, 0, 589834, 9, 0, 589835, 9, 0, 589836, 9, 0, 589837, 9, 0, 589838, 9, 0, 589839, 9, 0, 589840, 9, 0, 589841, 9, 0, 589842, 9, 0, 589843, 9, 0, 589844, 9, 0, 589845, 9, 0, 589846, 9, 0, 589847, 9, 0, 589848, -1073741821, 0, 589849, -1073741818, 0, 589850, 1610612743, 0, 589851, -1073741818, 0, 589852, -1073741818, 0, 655360, -1610612732, 0, 655361, -1610612732, 0, 655362, -1610612732, 0, 655363, -1610612732, 0, 655364, 10, 0, 655365, 9, 0, 655366, 9, 0, 655367, 9, 0, 655368, 9, 0, 655369, 9, 0, 655370, 9, 0, 655371, 9, 0, 655372, 9, 0, 655373, 9, 0, 655374, 9, 0, 655375, 9, 0, 655376, 9, 0, 655377, 9, 0, 655378, 9, 0, 655379, 9, 0, 655380, 9, 0, 655381, 9, 0, 655382, 9, 0, 655383, -1073741814, 0, 655384, -1073741818, 0, 655385, -1073741818, 0, 655386, -1073741818, 0, 655387, 1610612743, 0, 655388, -1073741818, 0, 720896, -1610612732, 0, 720897, -1610612732, 0, 720898, -1610612732, 0, 720899, -1610612732, 0, 720900, -1610612732, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 3, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, -1073741818, 0, 720920, -1073741818, 0, 720921, -1073741818, 0, 720922, -1073741818, 0, 720923, 1610612743, 0, 720924, -1073741818, 0 )
+tile_data = PoolIntArray( 0, 1610612742, 0, 1, 1610612742, 0, 2, 1610612742, 0, 3, 1610612742, 0, 4, 1610612742, 0, 5, 1610612736, 0, 6, 1610612736, 0, 7, 1610612736, 0, 8, 1610612736, 0, 9, 1610612736, 0, 10, 1610612736, 0, 11, 1610612736, 0, 12, 1610612736, 0, 13, 1610612736, 0, 14, 1610612736, 0, 15, -1610612734, 0, 21, 1610612744, 0, 22, 1610612746, 0, 23, -1073741818, 0, 24, -1073741818, 0, 25, -1073741818, 0, 26, -1073741818, 0, 27, -1073741818, 0, 28, -1073741818, 0, 65536, 1610612743, 0, 65537, 1610612743, 0, 65538, -1610612732, 0, 65539, -1610612732, 0, 65540, -1610612726, 0, 65541, 9, 0, 65542, 9, 0, 65543, 9, 0, 65544, 9, 0, 65545, 9, 0, 65546, 9, 0, 65547, 1610612745, 0, 65548, 1610612745, 0, 65549, 9, 0, 65550, 8, 0, 65557, 1610612744, 0, 65558, 9, 0, 65559, 1610612746, 0, 65560, -1073741818, 0, 65561, 1610612743, 0, 65562, 1610612743, 0, 65563, -1073741818, 0, 65564, -1073741818, 0, 131072, 1610612743, 0, 131073, 1610612743, 0, 131074, -1610612732, 0, 131075, -1610612733, 0, 131076, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, 9, 0, 131080, -1610612728, 0, 131081, -1610612728, 0, 131082, -1610612728, 0, 131083, -1610612728, 0, 131084, 9, 0, 131085, 9, 0, 131086, 8, 0, 131093, 1610612744, 0, 131094, 9, 0, 131095, 9, 0, 131096, -1073741821, 0, 131097, -1073741818, 0, 131098, -1073741818, 0, 131099, -1073741818, 0, 131100, -1073741818, 0, 196608, -1610612732, 0, 196609, -1610612732, 0, 196610, -1610612732, 0, 196611, -1610612733, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 8, 0, 196620, 1610612744, 0, 196621, 9, 0, 196622, 8, 0, 196630, -1610612728, 0, 196631, -1610612728, 0, 196632, -1073741821, 0, 196633, -1073741818, 0, 196634, -1073741818, 0, 196635, -1073741818, 0, 196636, -1073741818, 0, 262144, 1610612736, 0, 262145, 1610612739, 0, 262146, 1610612736, 0, 262147, -1610612726, 0, 262148, 9, 0, 262149, 9, 0, 262150, 9, 0, 262151, 8, 0, 262156, 1610612744, 0, 262157, 9, 0, 262158, 8, 0, 262168, 1610612738, 0, 262169, 1610612739, 0, 262170, 1610612736, 0, 262171, 1610612739, 0, 262172, 1610612736, 0, 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 8, 0, 327692, 1610612744, 0, 327693, 9, 0, 327694, 8, 0, 327706, 1610612744, 0, 327707, 9, 0, 327708, 9, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, -1073741816, 0, 393225, -1073741816, 0, 393226, -1073741816, 0, 393227, -1073741816, 0, 393228, 9, 0, 393229, 9, 0, 393230, 8, 0, 393238, -1073741816, 0, 393239, -1073741816, 0, 393240, -1073741816, 0, 393241, -1073741816, 0, 393242, 9, 0, 393243, 9, 0, 393244, 9, 0, 458752, 0, 0, 458753, 3, 0, 458754, 0, 0, 458755, 10, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 9, 0, 458760, 9, 0, 458761, 9, 0, 458762, 9, 0, 458763, 9, 0, 458764, 9, 0, 458765, 9, 0, 458766, 8, 0, 458773, 1610612744, 0, 458774, 9, 0, 458775, 9, 0, 458776, -1073741814, 0, 458777, 3, 0, 458778, 0, 0, 458779, 3, 0, 458780, 0, 0, 524288, -1610612732, 0, 524289, -1610612732, 0, 524290, 1610612743, 0, 524291, -1610612733, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524302, 8, 0, 524309, 1610612744, 0, 524310, 9, 0, 524311, 9, 0, 524312, -1073741821, 0, 524313, -1073741818, 0, 524314, -1073741818, 0, 524315, -1073741818, 0, 524316, -1073741818, 0, 589824, -1610612732, 0, 589825, -1610612732, 0, 589826, -1610612732, 0, 589827, -1610612733, 0, 589828, 9, 0, 589829, 9, 0, 589830, 9, 0, 589831, 9, 0, 589832, 9, 0, 589833, 9, 0, 589834, 9, 0, 589835, 9, 0, 589836, 9, 0, 589837, 9, 0, 589838, 8, 0, 589845, 1610612744, 0, 589846, 9, 0, 589847, 9, 0, 589848, -1073741821, 0, 589849, -1073741818, 0, 589850, 1610612743, 0, 589851, -1073741818, 0, 589852, -1073741818, 0, 655360, -1610612732, 0, 655361, -1610612732, 0, 655362, -1610612732, 0, 655363, -1610612732, 0, 655364, 10, 0, 655365, 9, 0, 655366, 9, 0, 655367, 9, 0, 655368, 9, 0, 655369, 9, 0, 655370, 9, 0, 655371, 9, 0, 655372, 9, 0, 655373, 9, 0, 655374, 8, 0, 655381, 1610612744, 0, 655382, 9, 0, 655383, -1073741814, 0, 655384, -1073741818, 0, 655385, -1073741818, 0, 655386, -1073741818, 0, 655387, 1610612743, 0, 655388, -1073741818, 0, 720896, -1610612732, 0, 720897, -1610612732, 0, 720898, -1610612732, 0, 720899, -1610612732, 0, 720900, -1610612732, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 3, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 2, 0, 720917, 1610612744, 0, 720918, -1073741814, 0, 720919, -1073741818, 0, 720920, -1073741818, 0, 720921, -1073741818, 0, 720922, -1073741818, 0, 720923, 1610612743, 0, 720924, -1073741818, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 33.4625, 385.749 )
 
 [node name="Airlock1" parent="." instance=ExtResource( 6 )]
-position = Vector2( 608.041, 31.7866 )
-scale = Vector2( 1.5, 4 )
-open_width = 128
-time_to_open_seconds = 0.25
-initially_open = true
-
-[node name="Airlock2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1184.04, 735.787 )
-scale = Vector2( 1.5, 4 )
+position = Vector2( 920, 383.019 )
+rotation = 1.5708
+scale = Vector2( 5, 4 )
 open_width = 128
 time_to_open_seconds = 0.25
 
@@ -57,14 +55,22 @@ position = Vector2( 760.775, 62.9446 )
 rotation = 3.14159
 scale = Vector2( 2, 3 )
 
-[node name="Airlock2Receiver" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1505.35, 670.505 )
-rotation = -0.785398
-scale = Vector2( 2, 3 )
-
 [node name="EntranceDoor" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5.18471, 384.023 )
 rotation = 1.5708
+
+[node name="WoodBox" parent="EntranceDoor" instance=ExtResource( 8 )]
+position = Vector2( -44.0241, -308.197 )
+angular_velocity = 4.0
+
+[node name="WoodBox2" parent="EntranceDoor" instance=ExtResource( 8 )]
+position = Vector2( 95.9748, -604.816 )
+linear_velocity = Vector2( 5, 3 )
+
+[node name="WoodBox3" parent="EntranceDoor" instance=ExtResource( 8 )]
+position = Vector2( -194.025, -484.815 )
+linear_velocity = Vector2( 7, 1 )
+angular_velocity = 5.0
 
 [node name="Airlock1Gravity" type="Area2D" parent="."]
 visible = false
@@ -72,169 +78,98 @@ space_override = 1
 gravity_point = true
 gravity_distance_scale = 0.001
 gravity = 500.0
-script = ExtResource( 8 )
+script = ExtResource( 9 )
+initially_enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airlock1Gravity"]
 position = Vector2( 584.316, 530.783 )
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="Airlock1Gravity"]
-position = Vector2( 608.929, -5.00072 )
+position = Vector2( 2140, 383.019 )
 
-[node name="Airlock2Gravity" type="Area2D" parent="."]
-visible = false
-space_override = 1
-gravity_point = true
-gravity_distance_scale = 0.001
-gravity = 500.0
-script = ExtResource( 8 )
-initially_enabled = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Airlock2Gravity"]
-position = Vector2( 1183.81, 774.787 )
-shape = SubResource( 1 )
-
-[node name="Position2D" type="Position2D" parent="Airlock2Gravity"]
-position = Vector2( 1189.28, 803.245 )
-
-[node name="StartLadder" parent="." instance=ExtResource( 9 )]
+[node name="StartLadder" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12.9515, 354.685 )
 scale = Vector2( 2, 2 )
 
-[node name="Ladder" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1662.37, 319.886 )
-rotation = 1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1730.69, 319.886 )
-rotation = 1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1799.02, 319.594 )
-rotation = 1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1867.34, 319.594 )
-rotation = 1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder5" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1597.84, 448.07 )
-rotation = -1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder6" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1665.87, 448.07 )
-rotation = -1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder7" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1733.9, 448.07 )
-rotation = -1.5708
-scale = Vector2( 2, 2 )
-
-[node name="Ladder8" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1801.65, 448.07 )
-rotation = -1.5708
-scale = Vector2( 2, 2 )
-
 [node name="Lights" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="light1" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 97.9135, 638.046 )
+[node name="light1" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 740, 710 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light2" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 252.506, 481.99 )
+[node name="light2" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 90, 450 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light3" parent="Lights" instance=ExtResource( 10 )]
-visible = false
+[node name="light3" parent="Lights" instance=ExtResource( 11 )]
 position = Vector2( 253.482, 542.462 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light4" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 95.398, 769.976 )
+[node name="light4" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 250, 226 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light5" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 251.942, 863.61 )
+[node name="light5" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 250, 160 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light6" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 253.405, 929.934 )
+[node name="light6" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 250, 610 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light7" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 735.003, 1024.85 )
+[node name="light7" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1540, 541.678 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light8" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1121.34, 383.148 )
+[node name="light8" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1540, 610 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light9" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1538.73, 480.238 )
+[node name="light9" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1530, 226 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light10" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1539.09, 545.124 )
+[node name="light10" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1630, 450 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light11" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1632.65, 636.538 )
+[node name="light11" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1760, 450 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light12" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1759.92, 636.179 )
+[node name="light12" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1630, 320 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light13" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1760.99, 770.611 )
+[node name="light13" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1760, 320 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light14" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1632.65, 770.253 )
+[node name="light14" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 1530, 160 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light15" parent="Lights" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 1539.81, 864.176 )
+[node name="light15" parent="Lights" instance=ExtResource( 11 )]
+position = Vector2( 90, 320 )
 scale = Vector2( 2, 2 )
 texture_scale = 0.06
 
-[node name="light16" parent="Lights" instance=ExtResource( 10 )]
+[node name="light16" parent="Lights" instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 1538.73, 928.703 )
 scale = Vector2( 2, 2 )
@@ -242,14 +177,12 @@ texture_scale = 0.06
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
-[node name="MetalDoor" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1849.23, 383.683 )
-rotation = 1.5708
-open_width = 120
-initially_open = true
+[node name="next_level" type="Area2D" parent="."]
+position = Vector2( 1815.37, 383.019 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_level"]
+shape = SubResource( 2 )
 [connection signal="closed" from="Airlock1" to="." method="_on_Airlock1_closed"]
 [connection signal="opened" from="Airlock1" to="." method="_on_Airlock1_opened"]
-[connection signal="closed" from="Airlock2" to="." method="_on_Airlock2_closed"]
-[connection signal="opened" from="Airlock2" to="." method="_on_Airlock2_opened"]
 [connection signal="laser_detected" from="Airlock1Receiver" to="." method="_on_Airlock1Receiver_laser_detected"]
-[connection signal="laser_detected" from="Airlock2Receiver" to="." method="_on_Airlock2Receiver_laser_detected"]
+[connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]

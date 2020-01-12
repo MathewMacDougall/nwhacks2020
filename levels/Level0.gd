@@ -8,10 +8,11 @@ var window_bounds
 # Called when the node enters the scene tree for the first time.
 func _ready():
     connect("kill_player", $Player, "_on_kill_player")
-    window_bounds = get_viewport().size
     set_camera_limits()
     
 func _process(delta):
+    window_bounds = get_viewport().size
+    
     if check_player_out_of_bounds():
         emit_signal("kill_player")
 
@@ -28,30 +29,19 @@ func check_player_out_of_bounds():
     if player_position.y < 0 or player_position.y > window_bounds.y:
         return true
 
-
-func _on_Airlock1Receiver_laser_detected():
-    $Airlock1.open_or_close()
-
-
-func _on_Airlock2Receiver_laser_detected():
-    $Airlock2.open_or_close()
+func _on_LaserReceiver_laser_detected():
+    $AirlockDoor.open_or_close()
 
 
-func _on_Airlock1_opened():
-    $Airlock1Gravity.enable()
+func _on_HallwayDoorLaserReceiver_laser_detected():
+    $HallwayDoor.open_or_close()
+
+func _on_AirlockDoor_opened():
+    $Gravity.enable()
+    
+func _on_AirlockDoor_closed():
+    $Gravity.disable()
 
 
-func _on_Airlock1_closed():
-    $Airlock1Gravity.disable()
-
-
-func _on_Airlock2_opened():
-    $Airlock2Gravity.enable()
-
-
-func _on_Airlock2_closed():
-    $Airlock2Gravity.disable()
-
-
-func _on_next_level_body_entered(body):
+func _on_next_stage_body_entered(body):
     emit_signal("next_level")

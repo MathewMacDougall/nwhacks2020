@@ -130,7 +130,7 @@ margin_right = 461.12
 margin_bottom = 437.621
 custom_fonts/normal_font = ExtResource( 6 )
 visible_characters = 0
-percent_visible = 0.0
+percent_visible = 0.00236499
 text = "Evacuate! Evacuate!
 
 This is not a Drill.
@@ -225,6 +225,7 @@ position = Vector2( 725.579, 374.048 )
 texture = ExtResource( 4 )
 texture_scale = 0.2
 color = Color( 1, 0.494118, 0, 1 )
+energy = 1.3637
 [connection signal="animation_finished" from="InitialScene" to="." method="_on_InitialScene_animation_finished"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MainMenu/Credit" to="." method="_on_Credit_pressed"]

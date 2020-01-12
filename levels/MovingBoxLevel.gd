@@ -1,6 +1,8 @@
 extends Node2D
 
 signal kill_player
+signal next_level
+signal play_music
 
 var window_bounds
 
@@ -36,3 +38,8 @@ func check_player_out_of_bounds():
 
 func _on_GravityReceiver_laser_detected():
     $Gravity.enable()
+
+
+func _on_Area2D_body_entered(body):
+    emit_signal("next_level")
+    emit_signal("play_music", "assets/music/Main.ogg")
