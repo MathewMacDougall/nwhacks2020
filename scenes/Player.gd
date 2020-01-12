@@ -41,9 +41,10 @@ func _process(delta):
         var joint_player_path = player_holding_joint.node_a
         player_holding_joint.node_a = ""
         var wall_to_crawl_along = player_holding_joint.get_node(player_holding_joint.node_b)
-        var wall_rotation = wall_to_crawl_along.rotation
+        var wall_rotation = wall_to_crawl_along.rotation + PI/2
         var position_update_vector = Vector2(cos(wall_rotation), sin(wall_rotation))
-        position += position_update_vector.normalized() * current_crawl_speed * delta
+        position_update_vector = position_update_vector.normalized() * current_crawl_speed * delta
+        position += position_update_vector
         player_holding_joint.node_a = joint_player_path
         
     # Determine sprite to draw
