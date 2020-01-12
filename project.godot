@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="nwHacks2020"
-run/main_scene="res://RootScene.tscn"
+run/main_scene="res://StartMenu.tscn"
 config/icon="res://icon.png"
 
 [rendering]
