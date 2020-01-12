@@ -52,7 +52,7 @@ func _integrate_forces(state):
         if colliding_body is Ladder && !player_holding_joint:
             player_holding_joint = PinJoint2D.new()
             player_holding_joint.disable_collision = false
-            player_holding_joint.position = collision_position
+            player_holding_joint.position = position
             player_holding_joint.set_name("player_holding_joint")
             player_holding_joint.softness = 0
             player_holding_joint.set_node_a("../" + get_parent().get_path_to(self))
