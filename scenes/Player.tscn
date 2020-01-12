@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/light.png" type="Texture" id=2]
@@ -40,4 +40,3 @@ smoothing_enabled = true
 [node name="LaserPointer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 26.096, 1.73973 )
 
-[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
