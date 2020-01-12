@@ -39,3 +39,7 @@ func _on_AirlockDoor_opened():
     
 func _on_AirlockDoor_closed():
     $Gravity.disable()
+
+
+func _on_next_scene_body_entered(body):
+    SceneChanger.goto_scene("res://levels/AirlockHallwayLevel.tscn")
