@@ -1,8 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
+<<<<<<< HEAD
 [ext_resource path="res://assets/art/light.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/player_atlas.png" type="Texture" id=3]
+=======
+[ext_resource path="res://assets/art/player.png" type="Texture" id=2]
+[ext_resource path="res://scenes/LaserPointer.tscn" type="PackedScene" id=3]
+>>>>>>> Added laser pointer
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
@@ -10,6 +15,7 @@ bounce = 0.1
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.9586, 32.0699 )
 
+<<<<<<< HEAD
 [sub_resource type="Animation" id=3]
 resource_name = "Player Idle"
 loop = true
@@ -25,6 +31,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 2 ]
 }
+=======
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+>>>>>>> Added laser pointer
 
 [node name="player" type="RigidBody2D"]
 physics_material_override = SubResource( 1 )
@@ -42,6 +57,7 @@ energy = 0.7
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
+<<<<<<< HEAD
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 2
@@ -52,4 +68,10 @@ playback_speed = 0.5
 "anims/Player Idle" = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+=======
+frames = SubResource( 3 )
+
+[node name="LaserPointer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 22.3764, 3.36274 )
+>>>>>>> Added laser pointer
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
