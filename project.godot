@@ -36,10 +36,6 @@ config/name="nwHacks2020"
 run/main_scene="res://RootScene.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-SceneChanger="*res://scenes/SceneChanger.gd"
-
 [physics]
 
 2d/default_gravity_vector=Vector2( 0, 0 )

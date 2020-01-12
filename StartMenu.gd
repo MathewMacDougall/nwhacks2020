@@ -1,10 +1,13 @@
 extends Control
 
+signal next_level
+signal play_music(path)
+
 var current_x = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    emit_signal("play_music", "assets/music/StartMenu.ogg")
     
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,4 +19,18 @@ func _process(delta):
     
 
 func _on_StartButton_pressed():
-    get_tree().change_scene("levels/TestLevel.tscn")
+    $InitialScene.play("start_game")
+
+func _on_InitialScene_animation_finished(anim_name):
+    emit_signal("play_music", "assets/music/Initial.ogg")
+    emit_signal("next_level")
+
+
+func _on_Credit_pressed():
+    $MainMenu.visible = false
+    $CreditMenu.visible = true
+
+
+func _on_Back_pressed():
+    $MainMenu.visible = true
+    $CreditMenu.visible = false

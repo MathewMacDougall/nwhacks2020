@@ -34,6 +34,7 @@ func _input(event):
 
 func shoot():
     if can_shoot:
+        $LaserSoundEffect.play()
         can_shoot = false
         hit = cast_beam()
         emit_signal("shoot_laser_start")
@@ -41,6 +42,7 @@ func shoot():
         if $Line2D.points.size() > 1:
             $Line2D.remove_point(1)
         hit = null
+        $LaserSoundEffect.stop()
         emit_signal("shoot_laser_end")
         yield(get_tree().create_timer(beam_cooldown), "timeout")
         can_shoot = true

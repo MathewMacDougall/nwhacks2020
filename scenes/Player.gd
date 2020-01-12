@@ -97,28 +97,29 @@ func _input(event):
             _on_kill_player()
         
         
-func _integrate_forces(state): 
-    for i in range(get_colliding_bodies().size()):
-        var collision_position = state.get_contact_local_position(i)
-        var colliding_body = get_colliding_bodies()[i]
-        
-        if colliding_body is Ladder && !player_holding_joint && ignore_ladders_timer <= 0:
-            player_holding_joint = PinJoint2D.new()
-            player_holding_joint.disable_collision = false
-            player_holding_joint.position = position
-            player_holding_joint.set_name("player_holding_joint")
-            player_holding_joint.softness = 0
-            player_holding_joint.set_node_a("../" + get_parent().get_path_to(self))
-            player_holding_joint.set_node_b("../" + get_parent().get_path_to(colliding_body))
-            get_parent().call_deferred("add_child", player_holding_joint)
+func _integrate_forces(state):
+    if !player_killed:
+        for i in range(get_colliding_bodies().size()):
+            var collision_position = state.get_contact_local_position(i)
+            var colliding_body = get_colliding_bodies()[i]
             
-            var wall_to_crawl_along = colliding_body
-            player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
-            rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation
-            angular_velocity = 0 
-            
-        elif colliding_body is Fire && !player_killed:
-            _on_kill_player()
+            if colliding_body is Ladder && !player_holding_joint && ignore_ladders_timer <= 0:
+                player_holding_joint = PinJoint2D.new()
+                player_holding_joint.disable_collision = false
+                player_holding_joint.position = position
+                player_holding_joint.set_name("player_holding_joint")
+                player_holding_joint.softness = 0
+                player_holding_joint.set_node_a("../" + get_parent().get_path_to(self))
+                player_holding_joint.set_node_b("../" + get_parent().get_path_to(colliding_body))
+                get_parent().call_deferred("add_child", player_holding_joint)
+                
+                var wall_to_crawl_along = colliding_body
+                player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
+                rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation
+                angular_velocity = 0 
+                
+            elif colliding_body is Fire:
+                _on_kill_player()
                
 func select_player_sprite():
     # Determine sprite to draw

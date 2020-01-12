@@ -1,6 +1,7 @@
 extends Node2D
 
 signal kill_player
+signal next_level
 
 var window_bounds
 
@@ -43,4 +44,4 @@ func _on_AirlockDoor_closed():
 
 
 func _on_next_scene_body_entered(body):
-    SceneChanger.goto_scene("res://levels/AirlockHallwayLevel.tscn")
+    emit_signal("next_level")
