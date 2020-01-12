@@ -1,8 +1,4 @@
-extends Area2D
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+extends KinematicBody2D
 
 # Speed of the player (pixes/sec)
 export var speed = 400
@@ -43,9 +39,9 @@ func _process(delta):
         #$AnimatedSprite.animation = "up"
         $AnimatedSprite.flip_v = velocity.y > 0
         
+    velocity *= delta
+        
     # Update player position based on the velocity
-    position += velocity * delta
-    position.x = clamp(position.x, 0, screen_size.x)
-    position.y = clamp(position.y, 0, screen_size.y)
+    move_and_collide(velocity)
         
     
