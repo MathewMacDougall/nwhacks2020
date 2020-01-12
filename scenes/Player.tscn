@@ -28,6 +28,7 @@ tracks/0/keys = {
 
 [node name="player" type="RigidBody2D"]
 physics_material_override = SubResource( 1 )
+contacts_reported = 10
 contact_monitor = true
 script = ExtResource( 1 )
 
@@ -52,4 +53,5 @@ playback_speed = 0.5
 "anims/Player Idle" = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
