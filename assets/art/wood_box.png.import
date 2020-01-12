@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/oxygen_tank.png-5400b8f663a8f237754cf440ab43e084.stex"
+path="res://.import/wood_box.png-4a1add1c6841c01cab0e3dc9cfba7c93.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/oxygen_tank.png"
-dest_files=[ "res://.import/oxygen_tank.png-5400b8f663a8f237754cf440ab43e084.stex" ]
+source_file="res://assets/art/wood_box.png"
+dest_files=[ "res://.import/wood_box.png-4a1add1c6841c01cab0e3dc9cfba7c93.stex" ]
 
 [params]
 

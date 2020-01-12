@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box_1.png-1cb22820c3b01805f0a1e9ed52d9f53c.stex"
+path="res://.import/wall_atlas.png-d3459a0c062be9d738793e70823a4ce0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/box_1.png"
-dest_files=[ "res://.import/box_1.png-1cb22820c3b01805f0a1e9ed52d9f53c.stex" ]
+source_file="res://assets/art/wall_atlas.png"
+dest_files=[ "res://.import/wall_atlas.png-d3459a0c062be9d738793e70823a4ce0.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
