@@ -28,6 +28,11 @@ func _process(delta):
     # Perform a jump if one is set
     if desired_jump_direction:
         linear_velocity = desired_jump_direction.normalized() * speed
+        angular_velocity = 0
+        if linear_velocity.x < 0:
+            rotation = linear_velocity.angle() + PI
+        else:
+            rotation = fmod(linear_velocity.angle(), PI)
         desired_jump_direction = false
         
     # Crawl if we're on a wall 
