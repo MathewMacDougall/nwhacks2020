@@ -138,18 +138,27 @@ func place_laser_origin():
     $LaserPointer.position = laser_normal_position if player_normal_direction else laser_non_normal_position
 
 func _on_kill_player():
-    linear_velocity = Vector2()
-    angular_velocity = 0
-    gravity_scale = 0
-    remove_holding_joint()
-    player_killed = true
-    $DeathAnimate.play("in")
+    if !player_killed:
+        player_killed = true
+        
+        linear_velocity = Vector2()
+        angular_velocity = 0
+        gravity_scale = 0
+        
+        remove_holding_joint()
+        
+        $DeathSoundEffect.play()
+        
+        $DeathAnimate.play("in")
 
 func _on_DeathAnimate_animation_finished(anim_name):
     if anim_name == "in":
         position = initial_player_position
         desired_jump_direction = false
         rotation = 0
+        
+        $SpawnSoundEffect.play()
+        
         $DeathAnimate.play("out")
     elif anim_name == "out":
         player_killed = false
