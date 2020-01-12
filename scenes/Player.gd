@@ -53,13 +53,12 @@ func _process(delta):
         else:
             rotation = fmod(linear_velocity.angle(), PI)
         desired_jump_direction = false
+    else:
+        desired_jump_direction = false
     
     # If holding a joint, determine the angle to take
     if player_holding_joint:
-        var wall_to_crawl_along = player_holding_joint.get_node(player_holding_joint.node_b)
-        player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
-        rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation 
-        angular_velocity = 0
+        
         
         # Determine crawl angle if necessary
         if abs(current_crawl_speed) > 0:
@@ -80,21 +79,22 @@ func _input(event):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and !event.pressed:
         # If we're on a wall, remove the joint holding us there and jump!
         if player_holding_joint:
+            desired_jump_direction = get_global_mouse_position() - position
             remove_holding_joint()
-            # Let the player jump in the direction of the click
-        # TODO: indent this line by 1
-        desired_jump_direction = get_global_mouse_position() - position
-        
-    # Handle crawling if we're on a wall
-    if player_holding_joint:
-        if Input.is_action_pressed("ui_up"):
-            current_crawl_speed = max_abs_crawl_speed
-        elif Input.is_action_pressed("ui_down"):
-            current_crawl_speed = -max_abs_crawl_speed
+    elif event is InputEventKey:
+        # Handle crawling if we're on a wall
+        if player_holding_joint:
+            if Input.is_action_pressed("ui_up"):
+                current_crawl_speed = max_abs_crawl_speed
+            elif Input.is_action_pressed("ui_down"):
+                current_crawl_speed = -max_abs_crawl_speed
+            else:
+                current_crawl_speed = 0
         else:
             current_crawl_speed = 0
-    else:
-        current_crawl_speed = 0
+            
+        if event.scancode == KEY_R:
+            _on_kill_player()
         
         
 func _integrate_forces(state): 
@@ -112,7 +112,13 @@ func _integrate_forces(state):
             player_holding_joint.set_node_b("../" + get_parent().get_path_to(colliding_body))
             get_parent().call_deferred("add_child", player_holding_joint)
             
-            linear_velocity = Vector2()
+            var wall_to_crawl_along = colliding_body
+            player_normal_direction = abs(wall_to_crawl_along.rotation) < PI / 2
+            rotation = wall_to_crawl_along.rotation if player_normal_direction else PI + wall_to_crawl_along.rotation
+            angular_velocity = 0 
+            
+        elif colliding_body is Fire && !player_killed:
+            _on_kill_player()
                
 func select_player_sprite():
     # Determine sprite to draw
@@ -133,18 +139,27 @@ func place_laser_origin():
     $LaserPointer.position = laser_normal_position if player_normal_direction else laser_non_normal_position
 
 func _on_kill_player():
-    linear_velocity = Vector2()
-    angular_velocity = 0
-    gravity_scale = 0
-    remove_holding_joint()
-    player_killed = true
-    $DeathAnimate.play("in")
+    if !player_killed:
+        player_killed = true
+        
+        linear_velocity = Vector2()
+        angular_velocity = 0
+        gravity_scale = 0
+        
+        remove_holding_joint()
+        
+        $DeathSoundEffect.play()
+        
+        $DeathAnimate.play("in")
 
 func _on_DeathAnimate_animation_finished(anim_name):
     if anim_name == "in":
         position = initial_player_position
         desired_jump_direction = false
         rotation = 0
+        
+        $SpawnSoundEffect.play()
+        
         $DeathAnimate.play("out")
     elif anim_name == "out":
         player_killed = false

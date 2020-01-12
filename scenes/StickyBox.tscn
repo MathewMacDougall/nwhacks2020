@@ -68,4 +68,3 @@ rotation = 4.71239
 [node name="Ladder16" parent="." index="18" instance=ExtResource( 2 )]
 position = Vector2( -32, -64 )
 rotation = 4.71239
-
