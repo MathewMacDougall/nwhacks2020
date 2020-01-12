@@ -2,25 +2,28 @@ extends Node2D
 
 export var open_width = 100
 export var time_to_open_seconds = 1.0
-export var initially_open = true
+export var initially_open = false
 
 var current_time = 0.0
 var opening = true
 
-var left_door_initial_x = 0
-var right_door_initial_x = 0
+var left_door_initial_x = null
+var right_door_initial_x = null
 
+func _init():
+    if(initially_open):
+        opening = true
+        current_time = time_to_open_seconds
+    else:
+        opening = false
+        current_time = 0.0
+        
 # Called when the node enters the scene tree for the first time.
 func _ready():
     left_door_initial_x = $DoorLeft.position.x
     right_door_initial_x = $DoorRight.position.x
     
-    if(initially_open):
-        opening = false
-        current_time = time_to_open_seconds
-    else:
-        opening = true
-        current_time = 0.0
+    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
