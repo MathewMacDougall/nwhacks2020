@@ -39,6 +39,12 @@ func _process(delta):
             rotation = fmod(linear_velocity.angle(), PI)
         desired_jump_direction = false
         
+    # Check that we're still touching the object we're grabbing
+    if player_holding_joint:
+        var object_holding_on_to = player_holding_joint.get_node(player_holding_joint.node_b)
+        if get_colliding_bodies().find(object_holding_on_to) == -1:
+            remove_holding_joint()
+        
     # Crawl if we're on a wall 
     if player_holding_joint and abs(current_crawl_speed) > 0:
         # We need to remove the joint to update the position
@@ -64,8 +70,7 @@ func _input(event):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
         # If we're on a wall, remove the joint holding us there and jump!
         if player_holding_joint:
-            player_holding_joint.free()
-            player_holding_joint = false
+            remove_holding_joint()
             # Let the player jump in the direction of the click
         # TODO: indent this line by 1
         desired_jump_direction = get_global_mouse_position() - position
@@ -130,3 +135,7 @@ func _on_LaserPointer_shoot_laser_start():
 
 func _on_LaserPointer_shoot_laser_end():
     laser_active = false
+
+func remove_holding_joint():
+    player_holding_joint.free()
+    player_holding_joint = false
