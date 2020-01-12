@@ -32,3 +32,7 @@ func check_player_out_of_bounds():
 
 #func _on_next_scene_body_entered(body):
 #    SceneChanger.goto_scene("res://levels/AirlockHallwayLevel.tscn")
+
+
+func _on_GravityReceiver_laser_detected():
+    $Gravity.enable()
