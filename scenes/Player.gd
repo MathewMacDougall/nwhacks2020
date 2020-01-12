@@ -112,6 +112,7 @@ func select_player_sprite():
 func _on_kill_player():
     linear_velocity = Vector2()
     angular_velocity = 0
+    gravity_scale = 0
     player_killed = true
     $DeathAnimate.play("in")
 
@@ -123,6 +124,7 @@ func _on_DeathAnimate_animation_finished(anim_name):
         $DeathAnimate.play("out")
     elif anim_name == "out":
         player_killed = false
+        gravity_scale = 1
 
 func _on_LaserPointer_shoot_laser_start():
     laser_active = true
