@@ -34,6 +34,9 @@ func _process(delta):
     $DoorLeft.position.x = left_door_initial_x - (current_time / time_to_open_seconds) * open_width / 2.0
     $DoorRight.position.x = right_door_initial_x + (current_time / time_to_open_seconds) * open_width / 2.0
     
+func open_or_close():
+    opening = !opening
+    
 func open():
     opening = true
     

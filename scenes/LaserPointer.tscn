@@ -15,5 +15,4 @@ offset = Vector2( 0, 5.5 )
 points = PoolVector2Array( 0, 0, 0, -40 )
 width = 7.0
 default_color = Color( 1, 0, 0, 1 )
-texture_mode = -1876908910
 end_cap_mode = 2

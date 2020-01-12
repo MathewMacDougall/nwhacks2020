@@ -58,6 +58,9 @@ func cast_beam():
     var beam_end = null
     if(result):
         beam_end = result.position
+        if result.collider is LaserReceiver:
+            result.collider.receive_laser()
+        #print(result.metadata)
     else:
         beam_end = beam_origin + beam_vector
         

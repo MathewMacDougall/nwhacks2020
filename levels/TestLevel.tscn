@@ -134,6 +134,6 @@ autoplay = true
 position = Vector2( 926.914, 383.515 )
 
 [node name="LaserReceiver" parent="." instance=ExtResource( 9 )]
-position = Vector2( 219.42, 282.645 )
+position = Vector2( 226.213, 283.023 )
 rotation = 2.35619
 scale = Vector2( 2, 2 )
