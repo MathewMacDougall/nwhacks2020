@@ -7,6 +7,7 @@
 
 [node name="Boss" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1651.5, 395.253 )
+rotation = 0.000531057
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 986.338, 633.585 )
