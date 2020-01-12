@@ -4,10 +4,20 @@
 [ext_resource path="res://scenes/Ladder.tscn" type="PackedScene" id=2]
 
 [node name="StickyBox" instance=ExtResource( 1 )]
-mass = 4.0
+mass = 10.0
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 0.0
+angular_damp = 0.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 4, 4 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2( 4, 4 )
+
+[node name="Visibility" parent="." index="2"]
+scale = Vector2( 4, 4 )
+rect = Rect2( -16, -16, 32, 32 )
 
 [node name="Ladder" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 64, -64 )
